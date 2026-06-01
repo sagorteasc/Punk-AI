@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'OCRX';
+  /* Using the provided WOFF file for better web compatibility */
+  src: url('fonts/016d77631553ff359b97c15a2ddb99e0.woff') format('woff');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.sora {
+  font-family: "Sora", sans-serif;
+  font-style: normal;
+}
+
+.source-code-pro {
+  font-family: "Source Code Pro", monospace;
+  font-style: normal;
+}
+
+:root{
+  --secondary-color: #525252
+}
