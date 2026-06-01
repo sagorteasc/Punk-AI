@@ -8,18 +8,20 @@ const Navbar = () => {
   const [opened, { toggle, close }] = useDisclosure();
 
   return (
-    <nav className="max-w-5xl mx-auto">
-      <Container className="py-4">
-        <Group justify="space-between">
-          <img src={NavLogo} alt="NavLogo" />
+    <nav className="border-b border-[#f3f1bf] sticky inset-0 z-20 backdrop-blur-sm">
+      <div className="max-w-5xl mx-auto">
+        <Container className="py-4">
+          <Group justify="space-between">
+            <img src={NavLogo} alt="NavLogo" />
 
-          <DesktopView />
+            <DesktopView />
 
-          <Burger opened={opened} onClick={toggle} hiddenFrom="md" />
-        </Group>
-      </Container>
+            <Burger opened={opened} onClick={toggle} hiddenFrom="md" />
+          </Group>
+        </Container>
 
-      <MobileView opened={opened} close={close} />
+        <MobileView opened={opened} close={close} />
+      </div>
     </nav>
   );
 };

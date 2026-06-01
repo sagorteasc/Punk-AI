@@ -12,17 +12,22 @@
   font-display: swap;
 }
 
-.sora {
+.font-sora {
   font-family: "Sora", sans-serif;
   font-style: normal;
 }
 
-.source-code-pro {
+.font-source-code-pro {
   font-family: "Source Code Pro", monospace;
   font-style: normal;
+}
+
+.font-ocrx{
+  font-family: "OCRX", monospace;
 }
 
 :root{
   --primary-color: #111111;
   --secondary-color: #525252;
+  --third-color: #5C5C5C;
 }

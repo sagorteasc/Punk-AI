@@ -11,7 +11,7 @@ import { Link } from "@tanstack/react-router";
 const Footer = () => {
   return (
     <footer className="border-t border-neutral-200 bg-[#e0e0e0]">
-      <div className="mx-auto max-w-6xl px-6 py-10">
+      <div className="mx-auto max-w-7xl px-6 py-10">
         <div className="grid gap-10 md:grid-cols-3">
           <div className="flex flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
             <div className="flex items-center justify-center gap-2 h-12">
@@ -107,7 +107,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <button className="rounded bg-linear-to-bl from-[#313131] to-[#222222] px-9 py-2 text-sm text-white source-code-pro drop-shadow-2xl">
+              <button className="rounded bg-linear-to-bl from-[#313131] to-[#222222] px-9 py-2 text-sm text-white font-source-code-pro shadow-2xl drop-shadow-2xl">
                 FAQ
               </button>
             </div>

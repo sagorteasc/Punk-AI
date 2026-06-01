@@ -1,3 +1,4 @@
+import SellPrompt from "@/components/SellPrompt";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
 import { createFileRoute } from "@tanstack/react-router";
@@ -10,6 +11,7 @@ function RouteComponent() {
   return (
     <>
       <Navbar />
+      <SellPrompt />
       <Footer />
     </>
   );

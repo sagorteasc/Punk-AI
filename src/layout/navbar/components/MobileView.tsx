@@ -22,7 +22,7 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
         <Group hiddenFrom="md">
           <Button
             variant="white"
-            className="shadow-md text-[#363535]! source-code-pro font-bold! text-sm"
+            className="shadow-md text-[#363535]! font-source-code-pro font-bold! text-sm"
           >
             Sign In
           </Button>
