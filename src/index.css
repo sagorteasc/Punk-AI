@@ -23,5 +23,6 @@
 }
 
 :root{
-  --secondary-color: #525252
+  --primary-color: #111111;
+  --secondary-color: #525252;
 }
