@@ -1,3 +1,4 @@
+import PunkWork from "@/components/PunkWork";
 import SellPrompt from "@/components/SellPrompt";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
@@ -12,6 +13,7 @@ function RouteComponent() {
     <>
       <Navbar />
       <SellPrompt />
+      <PunkWork />
       <Footer />
     </>
   );

@@ -29,10 +29,10 @@ const YoutubeVideo = () => {
             <input
               type="email"
               placeholder="Enter Email Address"
-              className="flex-1 bg-transparent px-6 py-5 text-[#6B6B6B] outline-none"
+              className="flex-1 bg-transparent px-1.5 md:px-6 py-5 text-[#6B6B6B] outline-none"
             />
 
-            <button className="bg-linear-to-bl from-[#313131] to-[#222222] px-10 text-sm font-bold text-white rounded-lg m-1.5">
+            <button className="bg-linear-to-bl from-[#313131] to-[#222222] px-2 md:px-5 text-[8px]! md:text-sm! font-bold text-white rounded-lg m-1.5 hover:cursor-pointer">
               GET EARLY ACCESS
             </button>
           </div>

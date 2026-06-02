@@ -1,0 +1,45 @@
+.list {
+  position: relative;
+  margin-bottom: var(--mantine-spacing-xl);
+  width: 75%;
+  margin: 0 auto;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.indicator {
+  background-color: var(--mantine-color-white);
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-gray-2);
+  box-shadow: var(--mantine-shadow-sm);
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-6);
+    border-color: var(--mantine-color-dark-4);
+  }
+}
+
+.tab {
+  z-index: 1;
+  font-weight: 600;
+  transition: color 100ms ease;
+  color: var(--third-color);
+
+  &[data-active] {
+    color: white;
+  background: linear-gradient(
+    to bottom left,
+    #313131,
+    #222222
+  );
+  border-radius: 4px;
+  }
+
+  @mixin dark {
+    color: var(--mantine-color-dark-1);
+
+    &[data-active] {
+      color: var(--mantine-color-white);
+    }
+  }
+}
