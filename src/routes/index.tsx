@@ -1,5 +1,6 @@
 import PunkWork from "@/components/PunkWork";
 import SellPrompt from "@/components/SellPrompt";
+import StopGuessing from "@/components/StopGuessing";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
 import { createFileRoute } from "@tanstack/react-router";
@@ -14,6 +15,7 @@ function RouteComponent() {
       <Navbar />
       <SellPrompt />
       <PunkWork />
+      <StopGuessing />
       <Footer />
     </>
   );
