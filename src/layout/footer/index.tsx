@@ -11,7 +11,7 @@ import { Link } from "@tanstack/react-router";
 const Footer = () => {
   return (
     <footer className="border-t border-neutral-200 bg-[#e0e0e0]">
-      <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="max-w-360 mx-auto px-6 md:px-8 py-10">
         <div className="grid gap-10 md:grid-cols-3">
           <div className="flex flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
             <div className="flex items-center justify-center gap-2 h-12">
@@ -62,9 +62,9 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-7">
-            <div className="flex items-center gap-2">
-              <img src={FooterLogo} alt="Punk" className="h-10 w-auto" />
+          <div className="flex items-center gap-3">
+            <div className="flex items-center md:pl-8">
+              <img src={FooterLogo} alt="Punk" className="h-10 w-30" />
             </div>
 
             <div className="bg-[#D9D9D9] rounded-full p-1"></div>
@@ -72,30 +72,30 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <Link
                 to="/"
-                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3  hover:from-black transition-colors duration-75"
+                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3  hover:from-black transition-colors duration-75 w-10 h-10"
               >
-                <img src={Twitter} alt="Twitter" />
+                <img className="w-4 h-4" src={Twitter} alt="Twitter" />
               </Link>
 
               <Link
                 to="/"
-                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:from-[#5865F2] hover:to-[#5865F2] transition-colors duration-75"
+                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:from-[#5865F2] hover:to-[#5865F2] transition-colors duration-75 w-10 h-10"
               >
-                <img src={Discord} alt="Discord" />
+                <img className="w-4 h-4" src={Discord} alt="Discord" />
               </Link>
 
               <Link
                 to="/"
-                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:bg-linear-to-r hover:from-[#E4405F] hover:to-[#E4405F] transition-colors duration-75"
+                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:bg-linear-to-r hover:from-[#E4405F] hover:to-[#E4405F] transition-colors duration-75 w-10 h-10"
               >
-                <img src={Instagram} alt="Instagram" />
+                <img className="w-4 h-4" src={Instagram} alt="Instagram" />
               </Link>
 
               <Link
                 to="/"
-                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:from-[#EA4335] hover:to-[#EA4335] transition-colors duration-75"
+                className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:from-[#EA4335] hover:to-[#EA4335] transition-colors duration-75 w-10 h-10"
               >
-                <img src={Gmail} alt="Gmail" />
+                <img className="w-4 h-4" src={Gmail} alt="Gmail" />
               </Link>
             </div>
           </div>

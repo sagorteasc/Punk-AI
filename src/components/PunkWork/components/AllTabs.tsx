@@ -39,7 +39,7 @@ const AllTabs = () => {
         />
       </Tabs.List>
 
-      <div className="w-4/5 mx-auto mt-15">
+      <div className="w-11/12 mx-auto mt-15">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {currentTabData.map((data) => (
             <Card key={data.id} data={data} />

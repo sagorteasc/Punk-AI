@@ -1,10 +1,11 @@
 .list {
   position: relative;
   margin-bottom: var(--mantine-spacing-xl);
-  width: 75%;
+  width: 80%;
   margin: 0 auto;
   justify-content: center;
   font-size: 14px;
+  gap: 20px;
 }
 
 .indicator {

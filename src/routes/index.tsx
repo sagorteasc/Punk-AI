@@ -11,12 +11,12 @@ export const Route = createFileRoute("/")({
 
 function RouteComponent() {
   return (
-    <>
+    <div className="">
       <Navbar />
       <SellPrompt />
       <PunkWork />
       <StopGuessing />
       <Footer />
-    </>
+    </div>
   );
 }
