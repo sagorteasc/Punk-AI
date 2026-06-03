@@ -1,8 +1,12 @@
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import Providers from "@/providers";
+import NotFound from "@/components/NotFound";
+import Loading from "@/components/Loading";
 
 export const Route = createRootRoute({
   component: RootComponent,
+  notFoundComponent: NotFound,
+  pendingComponent: Loading,
 });
 
 function RootComponent() {
