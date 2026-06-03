@@ -1,3 +1,4 @@
+import { navMenuLinks } from "@/constant";
 import { Button, Group } from "@mantine/core";
 import { Link } from "@tanstack/react-router";
 
@@ -5,15 +6,11 @@ const DesktopView = () => {
   return (
     <>
       <Group visibleFrom="md" gap={"xl"}>
-        <Link to="/" className="text-[#6D6D6D]">
-          Use Cases
-        </Link>
-        <Link to="/" className="text-[#6D6D6D]">
-          Technology
-        </Link>
-        <Link to="/" className="text-[#6D6D6D]">
-          Pricing
-        </Link>
+        {navMenuLinks.map((link) => (
+          <Link key={link.title} to={link.link} className="text-[#6D6D6D]">
+            {link.title}
+          </Link>
+        ))}
       </Group>
 
       <Group visibleFrom="md">

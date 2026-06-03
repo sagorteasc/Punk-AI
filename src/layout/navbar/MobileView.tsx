@@ -1,3 +1,4 @@
+import { navMenuLinks } from "@/constant";
 import { Button, Drawer, Group } from "@mantine/core";
 import { Link } from "@tanstack/react-router";
 
@@ -8,15 +9,11 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
     <>
       <Drawer opened={opened} onClose={close} title="Menu" hiddenFrom="md">
         <div className="flex flex-col gap-5 mb-5">
-          <Link to="/" className="text-[#6D6D6D]">
-            Use Cases
-          </Link>
-          <Link to="/" className="text-[#6D6D6D]">
-            Technology
-          </Link>
-          <Link to="/" className="text-[#6D6D6D]">
-            Pricing
-          </Link>
+          {navMenuLinks.map((link) => (
+            <Link key={link.title} to={link.link} className="text-[#6D6D6D]">
+              {link.title}
+            </Link>
+          ))}
         </div>
 
         <Group hiddenFrom="md">
