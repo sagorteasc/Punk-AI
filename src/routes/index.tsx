@@ -1,6 +1,6 @@
-import PunkWork from "@/components/PunkWork";
-import SellPrompt from "@/components/SellPrompt";
-import StopGuessing from "@/components/StopGuessing";
+import PunkWork from "@/routes/(main)/punkWork";
+import SellPrompt from "@/routes/(main)/sellPrompt";
+import StopGuessing from "@/routes/(main)/stopGuessing";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
 import { createFileRoute } from "@tanstack/react-router";

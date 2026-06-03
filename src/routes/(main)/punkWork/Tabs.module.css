@@ -9,10 +9,17 @@
 }
 
 .indicator {
-  background-color: var(--mantine-color-white);
-  border-radius: var(--mantine-radius-md);
-  border: 1px solid var(--mantine-color-gray-2);
-  box-shadow: var(--mantine-shadow-sm);
+  border-radius: 4px;
+  background: linear-gradient(
+    to bottom left,
+    #313131,
+    #222222
+  );
+
+  box-shadow:
+    0 1px 3px rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 -2.4px 0 rgba(255, 255, 255, 0.12);
 
   @mixin dark {
     background-color: var(--mantine-color-dark-6);
@@ -26,14 +33,15 @@
   transition: color 100ms ease;
   color: var(--third-color);
 
+  box-shadow:
+    0 1px 3px rgba(200, 140, 44, 0.2),
+    0 0 0 1px rgba(200, 140, 44, 0.1),
+    inset 0 -2.4px 0 rgba(200, 140, 44, 0.12);
+
+  border-radius: 4px;
+
   &[data-active] {
     color: white;
-  background: linear-gradient(
-    to bottom left,
-    #313131,
-    #222222
-  );
-  border-radius: 4px;
   }
 
   @mixin dark {

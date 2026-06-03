@@ -19,9 +19,16 @@ const DesktopView = () => {
       <Group visibleFrom="md">
         <Button
           variant="white"
-          className="shadow-md text-[#363535]! font-source-code-pro font-bold! text-sm"
+          className="text-[#363535]! rounded font-source-code-pro font-bold! text-sm"
+          style={{
+            boxShadow: `
+              0 0 0 1px #EBEBEB,
+              0 1px 3px rgba(143, 143, 143, 0.2),
+              inset 0 -2.4px 0 rgba(62, 62, 62, 0.04)
+            `,
+          }}
         >
-          Sign In
+          SIGN UP
         </Button>
       </Group>
     </>

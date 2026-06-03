@@ -1,4 +1,4 @@
-import YoutubeVideo from "./components/YoutubeVideo";
+import YoutubeVideo from "./YoutubeVideo";
 
 const SellPrompt = () => {
   return (

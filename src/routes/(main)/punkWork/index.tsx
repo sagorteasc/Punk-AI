@@ -1,4 +1,4 @@
-import AllTabs from "./components/AllTabs";
+import AllTabs from "./AllTabs";
 
 const PunkWork = () => {
   return (
