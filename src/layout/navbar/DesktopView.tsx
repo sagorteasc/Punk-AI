@@ -16,7 +16,7 @@ const DesktopView = () => {
       <Group visibleFrom="md">
         <Button
           variant="white"
-          className="text-[#363535]! rounded font-source-code-pro font-bold! text-sm"
+          className="text-[#363535]! rounded font-source-code-pro font-bold! text-sm transition-transform hover:-translate-y-1 hover:cursor-pointer"
           style={{
             boxShadow: `
               0 0 0 1px #EBEBEB,

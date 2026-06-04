@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
 
@@ -7,8 +7,6 @@ export const Route = createFileRoute("/technology")({
 });
 
 function RouteComponent() {
-  const navigate = useNavigate();
-
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center px-6">
       {/* Background Glow */}
@@ -42,16 +40,28 @@ function RouteComponent() {
           </div>
         </motion.div>
 
-        <motion.button
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          onClick={() => navigate({ to: "/" })}
-          className="mt-20 inline-flex items-center gap-3 rounded-xl bg-linear-to-bl from-[#313131] to-[#222222] px-6 py-3 text-white shadow-lg transition-transform hover:-translate-y-1 hover:cursor-pointer"
+          className="mt-20"
         >
-          <ArrowLeft size={18} />
-          Back to Home
-        </motion.button>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold text-[#363535] font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
+            style={{
+              boxShadow: `
+                0 0 0 1px #EBEBEB,
+                0 1px 3px rgba(143, 143, 143, 0.2),
+                inset 0 -2.4px 0 rgba(62, 62, 62, 0.04)
+              `,
+              background: "#FFFFFF",
+            }}
+          >
+            <ArrowLeft size={16} />
+            RETURN HOME
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

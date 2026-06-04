@@ -2,6 +2,8 @@ import { Outlet, createRootRoute } from "@tanstack/react-router";
 import Providers from "@/providers";
 import NotFound from "@/components/NotFound";
 import Loading from "@/components/Loading";
+import Navbar from "@/layout/navbar";
+import Footer from "@/layout/footer";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -13,7 +15,9 @@ function RootComponent() {
   return (
     <div className="font-sora bg-[#fafafa] min-h-screen">
       <Providers>
+        <Navbar />
         <Outlet />
+        <Footer />
       </Providers>
     </div>
   );

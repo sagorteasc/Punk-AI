@@ -4,27 +4,73 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const YoutubeVideo = () => {
-  const [opened, setOpened] = useState(false);
+  const [playing, setPlaying] = useState(false);
 
   return (
     <div className="w-5/6 mx-auto">
-      <div className="relative mb-8">
-        <button
-          onClick={() => setOpened(true)}
-          className="w-full cursor-pointer"
-        >
-          <img src={YoutubeThumbnail} alt="Youtube Video" className="w-full" />
-        </button>
+      <div className="relative mb-8 overflow-hidden rounded-2xl">
+        <AnimatePresence mode="wait">
+          {!playing ? (
+            <motion.button
+              key="thumbnail"
+              onClick={() => setPlaying(true)}
+              className="w-full cursor-pointer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.35 }}
+            >
+              <img
+                src={YoutubeThumbnail}
+                alt="Youtube Video"
+                className="w-full"
+              />
 
-        <div className="absolute left-[6%] top-[10%]">
-          <h5 className="text-4xl lg:text-[52px] text-white leading-tight">
-            Inrtoducing Punk
-          </h5>
-        </div>
+              <div className="absolute left-[6%] top-[10%]">
+                <h5 className="text-4xl lg:text-[52px] text-white leading-tight">
+                  Introducing Punk
+                </h5>
+              </div>
 
-        <div className="absolute left-[6%] bottom-[15%] md:bottom-[12%]">
-          <img className="text-white w-auto h-10" src={Logo} alt="Logo" />
-        </div>
+              <div className="absolute left-[6%] bottom-[15%] md:bottom-[12%]">
+                <img className="h-10 w-auto" src={Logo} alt="Logo" />
+              </div>
+            </motion.button>
+          ) : (
+            <motion.div
+              key="video"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.45,
+                ease: "easeOut",
+              }}
+              className="relative aspect-video"
+            >
+              <motion.button
+                onClick={() => setPlaying(false)}
+                whileHover={{
+                  scale: 1.1,
+                  rotate: 90,
+                }}
+                whileTap={{
+                  scale: 0.9,
+                }}
+                className=" absolute top-4 right-4 z-10 h-10 w-10 rounded-full bg-linear-to-bl from-[#313131] to-[#222222] text-white cursor-pointer"
+              >
+                ✕
+              </motion.button>
+
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/boJG84Jcf-4?autoplay=1"
+                title="Punk"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <div className="mx-auto max-w-xl">
@@ -55,50 +101,6 @@ const YoutubeVideo = () => {
           </button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {opened && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/80"
-              onClick={() => setOpened(false)}
-            />
-
-            <div className="fixed inset-0 z-60 flex items-center justify-center p-4 md:p-10">
-              <motion.div
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: "100%", opacity: 0 }}
-                transition={{
-                  duration: 0.4,
-                  ease: "easeInOut",
-                }}
-                className="relative w-full max-w-5xl"
-              >
-                <button
-                  onClick={() => setOpened(false)}
-                  className="absolute -top-12 right-0 text-5xl text-white"
-                >
-                  ×
-                </button>
-
-                <div className="aspect-video overflow-hidden rounded-2xl">
-                  <iframe
-                    className="h-full w-full"
-                    src="https://www.youtube.com/embed/boJG84Jcf-4?autoplay=1"
-                    title="Punk"
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
