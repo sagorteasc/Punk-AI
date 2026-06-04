@@ -6,6 +6,7 @@
   justify-content: center;
   font-size: 14px;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .indicator {
@@ -50,5 +51,16 @@
     &[data-active] {
       color: var(--mantine-color-white);
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .list {
+    width: 95%;
+    gap: 8px;
+  }
+
+  .tab {
+    padding-inline: 12px;
   }
 }

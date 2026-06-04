@@ -27,13 +27,17 @@ const YoutubeVideo = () => {
               />
 
               <div className="absolute left-[6%] top-[10%]">
-                <h5 className="text-4xl lg:text-[52px] text-white leading-tight">
+                <h5 className="text-lg sm:text-2xl md:text-4xl lg:text-[52px] text-white leading-tight">
                   Introducing Punk
                 </h5>
               </div>
 
               <div className="absolute left-[6%] bottom-[15%] md:bottom-[12%]">
-                <img className="h-10 w-auto" src={Logo} alt="Logo" />
+                <img
+                  className="h-5 sm:h-7 md:h-10 w-auto"
+                  src={Logo}
+                  alt="Logo"
+                />
               </div>
             </motion.button>
           ) : (
