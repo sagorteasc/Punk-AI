@@ -28,13 +28,15 @@ const Card = ({ data }: CardType) => {
         onHoverEnd={() => setHovered(false)}
         className="relative h-95 overflow-hidden rounded-xl border border-[#C3C3C3] bg-[#F5F5F5] p-4"
       >
-        {hovered ? (
-          <Pause size={14} fill="currentColor" />
-        ) : (
-          <Play size={14} fill="currentColor" />
-        )}
+        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#DAD9CD]">
+          {hovered ? (
+            <Pause size={14} fill="currentColor" />
+          ) : (
+            <Play size={14} fill="currentColor" />
+          )}
+        </div>
 
-        <h3 className="mb-2 text-xl font-semibold text-(--primary-color)">
+        <h3 className="my-3 text-xl font-semibold text-(--primary-color)">
           {data.title}
         </h3>
 

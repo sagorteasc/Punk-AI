@@ -16,7 +16,9 @@ function RootComponent() {
     <div className="font-sora bg-[#fafafa] min-h-screen">
       <Providers>
         <Navbar />
-        <Outlet />
+        <main className="pt-20">
+          <Outlet />
+        </main>
         <Footer />
       </Providers>
     </div>

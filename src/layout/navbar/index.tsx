@@ -4,12 +4,50 @@ import NavLogo from "/logo.svg";
 import DesktopView from "./DesktopView";
 import MobileView from "./MobileView";
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 
 const Navbar = () => {
   const [opened, { toggle, close }] = useDisclosure();
 
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 20) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="border-b border-[#f3f1bf]">
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{
+        y: visible ? 0 : -100,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
+      className="fixed top-0 left-0 right-0 z-50 bg-[#FAFAFA]/80 backdrop-blur-lg"
+    >
       <div className="max-w-360 py-4 mx-auto">
         <div className="w-11/12 mx-auto">
           <Group justify="space-between">
@@ -25,7 +63,7 @@ const Navbar = () => {
 
         <MobileView opened={opened} close={close} />
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
