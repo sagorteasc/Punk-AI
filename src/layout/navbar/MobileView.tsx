@@ -16,10 +16,10 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
       padding="xl"
       styles={{
         content: {
-          background: "#F5F5F5",
+          background: "var(--bg-color)",
         },
         header: {
-          background: "#F5F5F5",
+          background: "var(--bg-color)",
         },
       }}
     >
@@ -43,7 +43,7 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
               key={link.title}
               to={link.link}
               onClick={close}
-              className="group flex items-center justify-between text-lg font-medium text-[#6D6D6D] transition-all duration-200 hover:text-[#C88C2C]"
+              className="group flex items-center justify-between text-lg font-medium text-(--navlink-text) transition-all duration-200 hover:text-[#C88C2C]"
             >
               <span>{link.title}</span>
 
@@ -59,14 +59,7 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
           <Button
             fullWidth
             variant="white"
-            className="text-[#363535]! rounded font-source-code-pro font-bold! text-sm transition-transform hover:-translate-y-1 hover:cursor-pointer"
-            style={{
-              boxShadow: `
-                0 0 0 1px #EBEBEB,
-                0 1px 3px rgba(143, 143, 143, 0.2),
-                inset 0 -2.4px 0 rgba(62, 62, 62, 0.04)
-              `,
-            }}
+            className="text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) rounded font-source-code-pro font-bold! text-sm transition-transform hover:-translate-y-1 hover:cursor-pointer"
           >
             SIGN UP
           </Button>

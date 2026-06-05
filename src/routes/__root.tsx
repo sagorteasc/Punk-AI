@@ -13,7 +13,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <div className="font-sora bg-[#fafafa] min-h-screen">
+    <div className="font-sora bg-(--bg-color) min-h-screen">
       <Providers>
         <Navbar />
         <main className="pt-20">

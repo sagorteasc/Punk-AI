@@ -1,4 +1,5 @@
-import FooterLogo from "/logo.svg";
+import FooterLogoLight from "/logo.svg";
+import FooterLogoDark from "/logoWhite.svg";
 import Twitter from "/twitter.svg";
 import Discord from "/discord.svg";
 import Instagram from "/instagram.svg";
@@ -7,17 +8,22 @@ import MetaLogo from "/meta.svg";
 import USAFlag from "/usa.svg";
 import CanadaFlag from "/canada.svg";
 import { Link } from "@tanstack/react-router";
+import { useComputedColorScheme } from "@mantine/core";
 
 const Footer = () => {
+  const computedColorScheme = useComputedColorScheme();
+
   return (
-    <footer className="border-t border-neutral-200 bg-[#e0e0e0]">
+    <footer className="border-t border-(--footer-border) bg-(--footer-bg)">
       <div className="max-w-360 mx-auto py-10">
         <div className="w-11/12 mx-auto">
           <div className="grid gap-10 md:grid-cols-3">
             <div className="flex flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
               <div className="flex items-center justify-center gap-2 h-12">
                 <img src={MetaLogo} alt="Meta Logo" />
-                <h2 className="text-2xl font-semibold text-[#1C2B33]">Meta</h2>
+                <h2 className="text-2xl font-semibold text-(--meta-text)">
+                  Meta
+                </h2>
               </div>
 
               <h3 className="mt-4 mb-3 text-(--primary-color)">
@@ -64,12 +70,22 @@ const Footer = () => {
           </div>
 
           <div className="mt-12 flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div className="flex items-center md:pl-8">
-                <img src={FooterLogo} alt="Punk" className="h-10 w-30" />
+                {computedColorScheme === "dark" ? (
+                  <img
+                    className="w-40 h-10"
+                    src={FooterLogoDark}
+                    alt="Footer Logo"
+                  />
+                ) : (
+                  <img
+                    className="w-40 h-10"
+                    src={FooterLogoLight}
+                    alt="Footer Logo"
+                  />
+                )}
               </div>
-
-              <div className="bg-[#D9D9D9] rounded-full p-1"></div>
 
               <div className="flex items-center gap-2">
                 <Link
@@ -103,13 +119,13 @@ const Footer = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-3 text-[#000000]">
+              <div className="flex items-center gap-3 text-(--black-text)">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
               </div>
 
               <div>
-                <button className="rounded bg-linear-to-bl from-[#313131] to-[#222222] px-9 py-2 text-sm text-white font-source-code-pro shadow-2xl drop-shadow-2xl">
+                <button className="rounded bg-linear-to-bl from-(--linear-btn-from) to-(--linear-btn-to) px-9 py-2 text-sm text-white font-source-code-pro shadow-2xl drop-shadow-2xl">
                   FAQ
                 </button>
               </div>

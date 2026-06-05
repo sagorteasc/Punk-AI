@@ -16,11 +16,11 @@ const Loading = () => {
       >
         <Loader size={64} color="#C88C2C" type="bars" className="mx-auto" />
 
-        <h2 className="mt-8 font-ocrx text-4xl md:text-6xl text-[#111111]">
+        <h2 className="mt-8 font-ocrx text-4xl md:text-6xl text-(--primary-color)">
           Loading
         </h2>
 
-        <p className="mt-4 font-source-code-pro text-sm tracking-[0.2em] uppercase text-[#5C5C5C]">
+        <p className="mt-4 font-source-code-pro text-sm tracking-[0.2em] uppercase text-(--third-color)">
           Preparing Experience
         </p>
 

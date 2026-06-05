@@ -48,15 +48,7 @@ function RouteComponent() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold text-[#363535] font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
-            style={{
-              boxShadow: `
-                        0 0 0 1px #EBEBEB,
-                        0 1px 3px rgba(143, 143, 143, 0.2),
-                        inset 0 -2.4px 0 rgba(62, 62, 62, 0.04)
-                      `,
-              background: "#FFFFFF",
-            }}
+            className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold  text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
           >
             <ArrowLeft size={16} />
             RETURN HOME
