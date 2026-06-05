@@ -26,7 +26,7 @@ const Card = ({ data }: CardType) => {
         transition={{ duration: 0.4, ease: "easeOut" }}
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
-        className="relative h-95 overflow-hidden rounded-xl border border-[#C3C3C3] bg-[#F5F5F5] p-4"
+        className="relative h-110 overflow-hidden rounded-xl border border-[#C3C3C3] bg-[#F5F5F5] p-4"
       >
         <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#DAD9CD]">
           {hovered ? (
