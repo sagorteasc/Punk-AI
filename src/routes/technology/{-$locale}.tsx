@@ -1,14 +1,22 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 
-export const Route = createFileRoute("/pricing")({
+export const Route = createFileRoute("/technology/{-$locale}")({
+  beforeLoad: ({ params }) => {
+    const locale = params.locale;
+
+    if (locale && locale !== "fr") {
+      throw notFound();
+    }
+  },
   component: RouteComponent,
 });
 
 function RouteComponent() {
   const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center px-6">
       {/* Background Glow */}
@@ -48,7 +56,7 @@ function RouteComponent() {
           className="mt-20"
         >
           <Link
-            to="/"
+            to="/{-$locale}"
             className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold  text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
           >
             <ArrowLeft size={16} />

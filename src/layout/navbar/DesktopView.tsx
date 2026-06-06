@@ -5,7 +5,7 @@ import {
   useMantineColorScheme,
   useComputedColorScheme,
 } from "@mantine/core";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { Languages, Moon, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -13,9 +13,39 @@ const DesktopView = () => {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme();
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const isFrench = i18n.language === "fr-CA";
+
+  // Theme toggle
   const toggleColorScheme = () => {
     setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
+  };
+
+  // Language toggle
+  const toggleLanguage = () => {
+    const scrollY = window.scrollY;
+
+    const path = location.pathname;
+
+    const newPath = path.endsWith("/fr")
+      ? path.replace(/\/fr$/, "") || "/"
+      : path === "/"
+        ? "/fr"
+        : `${path}/fr`;
+
+    navigate({
+      to: newPath as never,
+      replace: true,
+    });
+
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: scrollY,
+        behavior: "instant",
+      });
+    });
   };
 
   return (
@@ -24,7 +54,7 @@ const DesktopView = () => {
         {navMenuLinks.map((link) => (
           <Link
             key={link.translationKey}
-            to={link.link}
+            to={isFrench ? `${link.link}/fr` : link.link}
             className="text-(--navlink-text)"
           >
             {t(link.translationKey)}
@@ -47,9 +77,7 @@ const DesktopView = () => {
 
         <Button
           variant="white"
-          onClick={() =>
-            i18n.changeLanguage(i18n.language === "en" ? "fr-CA" : "en")
-          }
+          onClick={toggleLanguage}
           className="text-(--btn-text)! bg-(--btn-bg)! font-source-code-pro font-bold! transition-transform hover:-translate-y-1 hover:cursor-pointer shadow-(--btn-shadow)"
         >
           <Languages size={18} className="mr-1" />{" "}

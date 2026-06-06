@@ -10,11 +10,12 @@ import NavLogoLight from "/logo.svg";
 import NavLogoDark from "/logoWhite.svg";
 import DesktopView from "./DesktopView";
 import MobileView from "./MobileView";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Languages, Moon, Sun } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "@tanstack/react-router";
 
 const Navbar = () => {
   const [opened, { toggle, close }] = useDisclosure();
@@ -23,9 +24,38 @@ const Navbar = () => {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme();
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const isFrench = i18n.language === "fr-CA";
+  // Theme toggle
   const toggleColorScheme = () => {
     setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
+  };
+
+  // Language toggle
+  const toggleLanguage = () => {
+    const scrollY = window.scrollY;
+
+    const path = location.pathname;
+
+    const newPath = path.endsWith("/fr")
+      ? path.replace(/\/fr$/, "") || "/"
+      : path === "/"
+        ? "/fr"
+        : `${path}/fr`;
+
+    navigate({
+      to: newPath as never,
+      replace: true,
+    });
+
+    requestAnimationFrame(() => {
+      window.scrollTo({
+        top: scrollY,
+        behavior: "instant",
+      });
+    });
   };
 
   useEffect(() => {
@@ -67,7 +97,7 @@ const Navbar = () => {
       <div className="max-w-360 py-4 mx-auto">
         <div className="w-11/12 mx-auto">
           <Group justify="space-between">
-            <Link to="/">
+            <Link to={(isFrench ? "/fr" : "/") as never}>
               <img
                 className="w-32 md:w-40 h-auto"
                 src={
@@ -94,9 +124,7 @@ const Navbar = () => {
 
               <Button
                 variant="white"
-                onClick={() =>
-                  i18n.changeLanguage(i18n.language === "en" ? "fr-CA" : "en")
-                }
+                onClick={toggleLanguage}
                 className="text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro font-bold!"
               >
                 <Languages size={18} className="mr-1" />{" "}

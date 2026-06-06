@@ -100,28 +100,28 @@ const Footer = () => {
 
               <div className="flex items-center gap-2">
                 <Link
-                  to="/"
+                  to="/{-$locale}"
                   className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3  hover:from-black transition-colors duration-75 w-10 h-10"
                 >
                   <img className="w-4 h-4" src={Twitter} alt="Twitter" />
                 </Link>
 
                 <Link
-                  to="/"
+                  to="/{-$locale}"
                   className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:from-[#5865F2] hover:to-[#5865F2] transition-colors duration-75 w-10 h-10"
                 >
                   <img className="w-4 h-4" src={Discord} alt="Discord" />
                 </Link>
 
                 <Link
-                  to="/"
+                  to="/{-$locale}"
                   className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:bg-linear-to-r hover:from-[#E4405F] hover:to-[#E4405F] transition-colors duration-75 w-10 h-10"
                 >
                   <img className="w-4 h-4" src={Instagram} alt="Instagram" />
                 </Link>
 
                 <Link
-                  to="/"
+                  to="/{-$locale}"
                   className="rounded bg-linear-to-bl from-[#313131] to-[#222222] p-3 hover:from-[#EA4335] hover:to-[#EA4335] transition-colors duration-75 w-10 h-10"
                 >
                   <img className="w-4 h-4" src={Gmail} alt="Gmail" />

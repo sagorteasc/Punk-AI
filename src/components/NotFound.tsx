@@ -4,7 +4,8 @@ import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isFrench = i18n.language === "fr-CA";
 
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center px-6">
@@ -36,7 +37,7 @@ const NotFound = () => {
           className="mt-20"
         >
           <Link
-            to="/"
+            to={(isFrench ? "/fr" : "/") as never}
             className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
           >
             <ArrowLeft size={16} />

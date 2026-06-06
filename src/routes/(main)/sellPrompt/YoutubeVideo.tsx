@@ -108,14 +108,22 @@ const YoutubeVideo = () => {
       </div>
 
       <div className="mx-auto max-w-xl">
-        <div className="flex overflow-hidden rounded-2xl bg-(--glass-bg) shadow-(--glass-shadow) w-11/12 mx-auto">
+        <div
+          className="flex overflow-hidden rounded-2xl bg-(--glass-bg) shadow-(--glass-shadow) w-11/12 mx-auto"
+          style={
+            {
+              // backdropFilter: "var(--glass-backdrop-blur)",
+              // WebkitBackdropFilter: "var(--glass-backdrop-blur)",
+            }
+          }
+        >
           <input
             type="email"
             placeholder={t("video.emailPlaceholder")}
             className="flex-1 bg-transparent px-1.5 md:px-6 py-5 text-(--input-text) outline-none"
           />
 
-          <button className="bg-linear-to-bl from-(--linear-btn-from) to-(--linear-btn-to) px-2 md:px-5 text-[8px]! md:text-sm! font-bold text-white rounded-lg m-1.5 hover:cursor-pointer">
+          <button className="bg-linear-to-bl from-[#313131] to-[#222222] px-2 md:px-5 text-[8px]! md:text-sm! font-bold text-white rounded-lg m-1.5 hover:cursor-pointer">
             {t("video.cta")}
           </button>
         </div>

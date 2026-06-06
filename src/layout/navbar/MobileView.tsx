@@ -9,7 +9,9 @@ type MobileViewTypes = {
 };
 
 const MobileView = ({ opened, close }: MobileViewTypes) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const isFrench = i18n.language === "fr-CA";
 
   return (
     <Drawer
@@ -44,7 +46,7 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
           {navMenuLinks.map((link) => (
             <Link
               key={link.translationKey}
-              to={link.link}
+              to={isFrench ? `${link.link}/fr` : link.link}
               onClick={close}
               className="group flex items-center justify-between text-lg font-medium text-(--navlink-text) transition-all duration-200 hover:text-[#C88C2C]"
             >
