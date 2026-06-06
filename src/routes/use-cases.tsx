@@ -16,7 +16,7 @@ function RouteComponent() {
         <div className="absolute left-1/2 top-1/2 h-125 w-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C88C2C]/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center max-w-360 mx-auto w-11/12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ function RouteComponent() {
             {t("routes.badge")}
           </span>
 
-          <h1 className="mt-8 font-ocrx text-6xl md:text-8xl lg:text-9xl text-(--primary-color)">
+          <h1 className="mt-8 font-ocrx text-[clamp(3rem,7vw,6rem)] text-(--primary-color)">
             {t("routes.title")}
           </h1>
 
