@@ -4,8 +4,11 @@ import classes from "./Tabs.module.css";
 import Card from "./Card";
 import { tabItems } from "@/data/tabItems";
 import { tabData } from "@/data/tabData";
+import { useTranslation } from "react-i18next";
+import { tabDataFr } from "@/data/tabData.fr";
 
 const AllTabs = () => {
+  const { t, i18n } = useTranslation();
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
   const [value, setValue] = useState<string | null>("awareness");
   const [controlsRefs, setControlsRefs] = useState<
@@ -16,7 +19,11 @@ const AllTabs = () => {
     setControlsRefs(controlsRefs);
   };
 
-  const currentTabData = value ? tabData[value as keyof typeof tabData] : [];
+  const activeData = i18n.language === "fr-CA" ? tabDataFr : tabData;
+
+  const currentTabData = value
+    ? activeData[value as keyof typeof activeData]
+    : [];
 
   return (
     <Tabs variant="none" value={value} onChange={setValue}>
@@ -28,7 +35,7 @@ const AllTabs = () => {
             ref={setControlRef(tab.value)}
             className={classes.tab}
           >
-            {tab.label}
+            {t(tab.translationKey)}
           </Tabs.Tab>
         ))}
 

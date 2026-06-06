@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center px-6">
       {/* Background Glow */}
@@ -23,8 +26,7 @@ const NotFound = () => {
         <div className="mx-auto my-6 h-px w-40 bg-linear-to-r from-transparent via-[#C88C2C] to-transparent" />
 
         <p className="mx-auto max-w-md text-(--third-color)">
-          The page you're looking for doesn't exist, was moved, or never made it
-          into production.
+          {t("notFound.description")}
         </p>
 
         <motion.div
@@ -38,7 +40,7 @@ const NotFound = () => {
             className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
           >
             <ArrowLeft size={16} />
-            RETURN HOME
+            {t("notFound.returnHome")}
           </Link>
         </motion.div>
       </motion.div>

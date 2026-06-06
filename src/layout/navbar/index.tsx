@@ -13,7 +13,8 @@ import MobileView from "./MobileView";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Moon, Sun } from "lucide-react";
+import { Languages, Moon, Sun } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const [opened, { toggle, close }] = useDisclosure();
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme();
+  const { i18n } = useTranslation();
 
   const toggleColorScheme = () => {
     setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
@@ -66,11 +68,13 @@ const Navbar = () => {
         <div className="w-11/12 mx-auto">
           <Group justify="space-between">
             <Link to="/">
-              {computedColorScheme === "dark" ? (
-                <img className="w-40 h-10" src={NavLogoDark} alt="NavLogo" />
-              ) : (
-                <img className="w-40 h-10" src={NavLogoLight} alt="NavLogo" />
-              )}
+              <img
+                className="w-32 md:w-40 h-auto"
+                src={
+                  computedColorScheme === "dark" ? NavLogoDark : NavLogoLight
+                }
+                alt="NavLogo"
+              />
             </Link>
 
             <DesktopView />
@@ -86,6 +90,17 @@ const Navbar = () => {
                 ) : (
                   <Moon size={18} />
                 )}
+              </Button>
+
+              <Button
+                variant="white"
+                onClick={() =>
+                  i18n.changeLanguage(i18n.language === "en" ? "fr-CA" : "en")
+                }
+                className="text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro font-bold!"
+              >
+                <Languages size={18} className="mr-1" />{" "}
+                {i18n.language === "en" ? "FR" : "EN"}
               </Button>
 
               <Burger opened={opened} onClick={toggle} />

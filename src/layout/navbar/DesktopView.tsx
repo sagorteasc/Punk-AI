@@ -6,11 +6,13 @@ import {
   useComputedColorScheme,
 } from "@mantine/core";
 import { Link } from "@tanstack/react-router";
-import { Moon, Sun } from "lucide-react";
+import { Languages, Moon, Sun } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const DesktopView = () => {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme();
+  const { t, i18n } = useTranslation();
 
   const toggleColorScheme = () => {
     setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
@@ -21,11 +23,11 @@ const DesktopView = () => {
       <Group visibleFrom="md" gap={"xl"}>
         {navMenuLinks.map((link) => (
           <Link
-            key={link.title}
+            key={link.translationKey}
             to={link.link}
             className="text-(--navlink-text)"
           >
-            {link.title}
+            {t(link.translationKey)}
           </Link>
         ))}
       </Group>
@@ -45,9 +47,20 @@ const DesktopView = () => {
 
         <Button
           variant="white"
+          onClick={() =>
+            i18n.changeLanguage(i18n.language === "en" ? "fr-CA" : "en")
+          }
+          className="text-(--btn-text)! bg-(--btn-bg)! font-source-code-pro font-bold! transition-transform hover:-translate-y-1 hover:cursor-pointer shadow-(--btn-shadow)"
+        >
+          <Languages size={18} className="mr-1" />{" "}
+          {i18n.language === "en" ? "FR" : "EN"}
+        </Button>
+
+        <Button
+          variant="white"
           className="text-(--btn-text)! bg-(--btn-bg)! rounded font-source-code-pro font-bold! text-sm transition-transform hover:-translate-y-1 hover:cursor-pointer shadow-(--btn-shadow)"
         >
-          SIGN UP
+          {t("signUp")}
         </Button>
       </Group>
     </>

@@ -9,16 +9,20 @@ import USAFlag from "/usa.svg";
 import CanadaFlag from "/canada.svg";
 import { Link } from "@tanstack/react-router";
 import { useComputedColorScheme } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const computedColorScheme = useComputedColorScheme();
+  const { t, i18n } = useTranslation();
+
+  const isFrench = i18n.language === "fr-CA";
 
   return (
     <footer className="border-t border-(--footer-border) bg-(--footer-bg)">
       <div className="max-w-360 mx-auto py-10">
         <div className="w-11/12 mx-auto">
-          <div className="grid gap-10 md:grid-cols-3">
-            <div className="flex flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
+          <div className="grid gap-10 md:grid-cols-3 items-stretch">
+            <div className="flex h-full flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
               <div className="flex items-center justify-center gap-2 h-12">
                 <img src={MetaLogo} alt="Meta Logo" />
                 <h2 className="text-2xl font-semibold text-(--meta-text)">
@@ -26,45 +30,52 @@ const Footer = () => {
                 </h2>
               </div>
 
-              <h3 className="mt-4 mb-3 text-(--primary-color)">
-                Meta Approved Safe Workflow
+              <h3
+                className={`mt-4 mb-3 text-(--primary-color) ${
+                  isFrench ? "min-h-15" : ""
+                }`}
+              >
+                {t("footer.metaTitle")}
               </h3>
 
               <p className="flex-1 text-sm text-(--secondary-color)">
-                We use Meta’s official approved Developer App. One-time secure
-                connection. No Ads Manager access ever needed.
+                {t("footer.metaDescription")}
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
+            <div className="flex h-full flex-col items-center text-center border-b border-dotted border-[#ADADAD] px-0 py-7 md:border-b-0 md:border-r md:px-7 md:py-0">
               <div className="flex items-center justify-center h-12">
                 <img src={USAFlag} alt="USA Flag" />
               </div>
 
-              <h3 className="mt-4 mb-3 text-(--primary-color)">
-                USA Privacy Compliant
+              <h3
+                className={`mt-4 mb-3 text-(--primary-color) ${
+                  isFrench ? "min-h-15" : ""
+                }`}
+              >
+                {t("footer.usaTitle")}
               </h3>
 
               <p className="flex-1 text-sm text-(--secondary-color)">
-                Built to meet CCPA/CPRA and 19+ state privacy laws. Precise
-                location data is handled as sensitive information with full user
-                control.
+                {t("footer.usaDescription")}
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center px-0 py-7 md:px-7 md:py-0">
+            <div className="flex h-full flex-col items-center text-center px-0 py-7 md:px-7 md:py-0">
               <div className="flex items-center justify-center h-12">
                 <img src={CanadaFlag} alt="Canada Flag" />
               </div>
 
-              <h3 className="mt-4 mb-3 text-(--primary-color)">
-                Canada Privacy Compliant
+              <h3
+                className={`mt-4 mb-3 text-(--primary-color) ${
+                  isFrench ? "min-h-15" : ""
+                }`}
+              >
+                {t("footer.canadaTitle")}
               </h3>
 
               <p className="flex-1 text-sm text-(--secondary-color)">
-                Fully compliant with federal PIPEDA and provincial laws.
-                Location data is treated as sensitive and requires your explicit
-                approval.
+                {t("footer.canadaDescription")}
               </p>
             </div>
           </div>
@@ -120,13 +131,13 @@ const Footer = () => {
 
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3 text-(--black-text)">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="#">{t("footer.privacyPolicy")}</a>
+                <a href="#">{t("footer.termsOfService")}</a>
               </div>
 
               <div>
                 <button className="rounded bg-linear-to-bl from-(--linear-btn-from) to-(--linear-btn-to) px-9 py-2 text-sm text-white font-source-code-pro shadow-2xl drop-shadow-2xl">
-                  FAQ
+                  {t("footer.faq")}
                 </button>
               </div>
             </div>

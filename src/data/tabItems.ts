@@ -1,8 +1,8 @@
 export const tabItems = [
-  { value: "awareness", label: "Awareness" },
-  { value: "traffic", label: "Traffic" },
-  { value: "engagement", label: "Engagement" },
-  { value: "leads", label: "Leads" },
-  { value: "appPromotion", label: "App Promotion" },
-  { value: "sales", label: "Sales" },
+  { value: "awareness", translationKey: "tabs.awareness" },
+  { value: "traffic", translationKey: "tabs.traffic" },
+  { value: "engagement", translationKey: "tabs.engagement" },
+  { value: "leads", translationKey: "tabs.leads" },
+  { value: "appPromotion", translationKey: "tabs.appPromotion" },
+  { value: "sales", translationKey: "tabs.sales" },
 ];

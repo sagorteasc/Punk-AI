@@ -1,6 +1,7 @@
 import { navMenuLinks } from "@/constant";
 import { Button, Drawer } from "@mantine/core";
 import { Link } from "@tanstack/react-router";
+import { useTranslation } from "react-i18next";
 
 type MobileViewTypes = {
   opened: boolean;
@@ -8,6 +9,8 @@ type MobileViewTypes = {
 };
 
 const MobileView = ({ opened, close }: MobileViewTypes) => {
+  const { t } = useTranslation();
+
   return (
     <Drawer
       opened={opened}
@@ -26,10 +29,10 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
       <div className="flex h-full min-h-[80vh] flex-col">
         {/* Logo / Brand */}
         <div className="mb-8">
-          <h2 className="font-ocrx text-4xl text-[#111111]">Punk</h2>
+          <h2 className="font-ocrx text-4xl text-(--primary-text)">Punk</h2>
 
-          <p className="mt-2 text-sm text-[#6D6D6D]">
-            Identity resolution powered by AI
+          <p className="mt-2 text-sm text-(--navlink-text)">
+            {t("brandTagline")}
           </p>
         </div>
 
@@ -40,12 +43,12 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
         <div className="mt-8 flex flex-col gap-6">
           {navMenuLinks.map((link) => (
             <Link
-              key={link.title}
+              key={link.translationKey}
               to={link.link}
               onClick={close}
               className="group flex items-center justify-between text-lg font-medium text-(--navlink-text) transition-all duration-200 hover:text-[#C88C2C]"
             >
-              <span>{link.title}</span>
+              <span>{t(link.translationKey)}</span>
 
               <span className="translate-x-0 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
                 →
@@ -61,7 +64,7 @@ const MobileView = ({ opened, close }: MobileViewTypes) => {
             variant="white"
             className="text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) rounded font-source-code-pro font-bold! text-sm transition-transform hover:-translate-y-1 hover:cursor-pointer"
           >
-            SIGN UP
+            {t("signUp")}
           </Button>
 
           <p className="mt-4 text-center text-xs text-[#8A8A8A]">
