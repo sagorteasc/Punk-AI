@@ -19,7 +19,6 @@ import { useLocation } from "@tanstack/react-router";
 
 const Navbar = () => {
   const [opened, { toggle, close }] = useDisclosure();
-
   const [visible, setVisible] = useState(true);
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme();
@@ -37,6 +36,8 @@ const Navbar = () => {
   const toggleLanguage = () => {
     const scrollY = window.scrollY;
 
+    setVisible(true);
+
     const path = location.pathname;
 
     const newPath = path.endsWith("/fr")
@@ -48,13 +49,11 @@ const Navbar = () => {
     navigate({
       to: newPath as never,
       replace: true,
+      resetScroll: false,
     });
 
     requestAnimationFrame(() => {
-      window.scrollTo({
-        top: scrollY,
-        behavior: "instant",
-      });
+      window.scrollTo(0, scrollY);
     });
   };
 
@@ -81,6 +80,12 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setVisible(true);
+    });
+  }, [location.pathname]);
 
   return (
     <motion.nav
@@ -109,7 +114,7 @@ const Navbar = () => {
 
             <DesktopView />
 
-            <Group hiddenFrom="md" gap="xs">
+            <Group hiddenFrom="md" gap={6} wrap="nowrap">
               <Button
                 variant="white"
                 onClick={toggleColorScheme}

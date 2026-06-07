@@ -38,13 +38,11 @@ const DesktopView = () => {
     navigate({
       to: newPath as never,
       replace: true,
+      resetScroll: false,
     });
 
     requestAnimationFrame(() => {
-      window.scrollTo({
-        top: scrollY,
-        behavior: "instant",
-      });
+      window.scrollTo(0, scrollY);
     });
   };
 

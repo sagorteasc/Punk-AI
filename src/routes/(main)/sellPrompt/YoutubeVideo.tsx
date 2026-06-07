@@ -108,15 +108,7 @@ const YoutubeVideo = () => {
       </div>
 
       <div className="mx-auto max-w-xl">
-        <div
-          className="flex overflow-hidden rounded-2xl bg-(--glass-bg) shadow-(--glass-shadow) w-11/12 mx-auto"
-          style={
-            {
-              // backdropFilter: "var(--glass-backdrop-blur)",
-              // WebkitBackdropFilter: "var(--glass-backdrop-blur)",
-            }
-          }
-        >
+        <div className="flex overflow-hidden rounded-2xl bg-(--glass-bg) shadow-(--glass-shadow) w-11/12 mx-auto">
           <input
             type="email"
             placeholder={t("video.emailPlaceholder")}
