@@ -2,12 +2,10 @@ import YoutubeThumbnail from "/youtubeThumbnail.svg";
 import Logo from "/logoWhite.svg";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { useTranslation } from "react-i18next";
 
 const YoutubeVideo = () => {
   const [playing, setPlaying] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const { t } = useTranslation();
 
   return (
     <div className="w-5/6 mx-auto">
@@ -28,7 +26,7 @@ const YoutubeVideo = () => {
 
           <div className="absolute left-[2%] top-[3%] md:left-[1%] md:top-[1%]">
             <h5 className="text-lg sm:text-2xl md:text-4xl lg:text-[52px] text-white leading-tight">
-              {t("video.title")}
+              Introducing Punk
             </h5>
           </div>
 
@@ -111,12 +109,12 @@ const YoutubeVideo = () => {
         <div className="flex overflow-hidden rounded-2xl bg-(--glass-bg) shadow-(--glass-shadow) w-11/12 mx-auto">
           <input
             type="email"
-            placeholder={t("video.emailPlaceholder")}
+            placeholder="Enter Email Address"
             className="flex-1 bg-transparent px-1.5 md:px-6 py-5 text-(--input-text) outline-none"
           />
 
           <button className="bg-linear-to-bl from-[#313131] to-[#222222] px-2 md:px-5 text-[8px]! md:text-sm! font-bold text-white rounded-lg m-1.5 hover:cursor-pointer">
-            {t("video.cta")}
+            GET EARLY ACCESS
           </button>
         </div>
       </div>

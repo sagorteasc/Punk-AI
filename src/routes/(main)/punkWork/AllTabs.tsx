@@ -4,11 +4,8 @@ import classes from "./Tabs.module.css";
 import Card from "./Card";
 import { tabItems } from "@/data/tabItems";
 import { tabData } from "@/data/tabData";
-import { useTranslation } from "react-i18next";
-import { tabDataFr } from "@/data/tabData.fr";
 
 const AllTabs = () => {
-  const { t, i18n } = useTranslation();
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
   const [value, setValue] = useState<string | null>("awareness");
   const [controlsRefs, setControlsRefs] = useState<
@@ -18,12 +15,6 @@ const AllTabs = () => {
     controlsRefs[val] = node;
     setControlsRefs(controlsRefs);
   };
-
-  const activeData = i18n.language === "fr-CA" ? tabDataFr : tabData;
-
-  const currentTabData = value
-    ? activeData[value as keyof typeof activeData]
-    : [];
 
   return (
     <Tabs variant="none" value={value} onChange={setValue}>
@@ -35,7 +26,7 @@ const AllTabs = () => {
             ref={setControlRef(tab.value)}
             className={classes.tab}
           >
-            {t(tab.translationKey)}
+            {tab.label}
           </Tabs.Tab>
         ))}
 
@@ -48,7 +39,7 @@ const AllTabs = () => {
 
       <div className="w-11/12 mx-auto mt-15">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {currentTabData.map((data) => (
+          {tabData[value as keyof typeof tabData].map((data) => (
             <Card key={data.id} data={data} />
           ))}
         </div>

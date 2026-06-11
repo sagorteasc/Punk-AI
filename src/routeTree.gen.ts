@@ -9,15 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as Char123LocaleChar125RouteImport } from './routes/{-$locale}'
+import { Route as UseCasesRouteImport } from './routes/use-cases'
+import { Route as TechnologyRouteImport } from './routes/technology'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as UseCasesChar123LocaleChar125RouteImport } from './routes/use-cases/{-$locale}'
-import { Route as TechnologyChar123LocaleChar125RouteImport } from './routes/technology/{-$locale}'
-import { Route as PricingChar123LocaleChar125RouteImport } from './routes/pricing/{-$locale}'
 
-const Char123LocaleChar125Route = Char123LocaleChar125RouteImport.update({
-  id: '/{-$locale}',
-  path: '/{-$locale}',
+const UseCasesRoute = UseCasesRouteImport.update({
+  id: '/use-cases',
+  path: '/use-cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TechnologyRoute = TechnologyRouteImport.update({
+  id: '/technology',
+  path: '/technology',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,86 +34,62 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UseCasesChar123LocaleChar125Route =
-  UseCasesChar123LocaleChar125RouteImport.update({
-    id: '/use-cases/{-$locale}',
-    path: '/use-cases/{-$locale}',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TechnologyChar123LocaleChar125Route =
-  TechnologyChar123LocaleChar125RouteImport.update({
-    id: '/technology/{-$locale}',
-    path: '/technology/{-$locale}',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const PricingChar123LocaleChar125Route =
-  PricingChar123LocaleChar125RouteImport.update({
-    id: '/pricing/{-$locale}',
-    path: '/pricing/{-$locale}',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/{-$locale}': typeof Char123LocaleChar125Route
-  '/pricing/{-$locale}': typeof PricingChar123LocaleChar125Route
-  '/technology/{-$locale}': typeof TechnologyChar123LocaleChar125Route
-  '/use-cases/{-$locale}': typeof UseCasesChar123LocaleChar125Route
+  '/pricing': typeof PricingRoute
+  '/technology': typeof TechnologyRoute
+  '/use-cases': typeof UseCasesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/{-$locale}': typeof Char123LocaleChar125Route
-  '/pricing/{-$locale}': typeof PricingChar123LocaleChar125Route
-  '/technology/{-$locale}': typeof TechnologyChar123LocaleChar125Route
-  '/use-cases/{-$locale}': typeof UseCasesChar123LocaleChar125Route
+  '/pricing': typeof PricingRoute
+  '/technology': typeof TechnologyRoute
+  '/use-cases': typeof UseCasesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/{-$locale}': typeof Char123LocaleChar125Route
-  '/pricing/{-$locale}': typeof PricingChar123LocaleChar125Route
-  '/technology/{-$locale}': typeof TechnologyChar123LocaleChar125Route
-  '/use-cases/{-$locale}': typeof UseCasesChar123LocaleChar125Route
+  '/pricing': typeof PricingRoute
+  '/technology': typeof TechnologyRoute
+  '/use-cases': typeof UseCasesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/{-$locale}'
-    | '/pricing/{-$locale}'
-    | '/technology/{-$locale}'
-    | '/use-cases/{-$locale}'
+  fullPaths: '/' | '/pricing' | '/technology' | '/use-cases'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/{-$locale}'
-    | '/pricing/{-$locale}'
-    | '/technology/{-$locale}'
-    | '/use-cases/{-$locale}'
-  id:
-    | '__root__'
-    | '/'
-    | '/{-$locale}'
-    | '/pricing/{-$locale}'
-    | '/technology/{-$locale}'
-    | '/use-cases/{-$locale}'
+  to: '/' | '/pricing' | '/technology' | '/use-cases'
+  id: '__root__' | '/' | '/pricing' | '/technology' | '/use-cases'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Char123LocaleChar125Route: typeof Char123LocaleChar125Route
-  PricingChar123LocaleChar125Route: typeof PricingChar123LocaleChar125Route
-  TechnologyChar123LocaleChar125Route: typeof TechnologyChar123LocaleChar125Route
-  UseCasesChar123LocaleChar125Route: typeof UseCasesChar123LocaleChar125Route
+  PricingRoute: typeof PricingRoute
+  TechnologyRoute: typeof TechnologyRoute
+  UseCasesRoute: typeof UseCasesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/{-$locale}': {
-      id: '/{-$locale}'
-      path: '/{-$locale}'
-      fullPath: '/{-$locale}'
-      preLoaderRoute: typeof Char123LocaleChar125RouteImport
+    '/use-cases': {
+      id: '/use-cases'
+      path: '/use-cases'
+      fullPath: '/use-cases'
+      preLoaderRoute: typeof UseCasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/technology': {
+      id: '/technology'
+      path: '/technology'
+      fullPath: '/technology'
+      preLoaderRoute: typeof TechnologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -114,36 +99,14 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/use-cases/{-$locale}': {
-      id: '/use-cases/{-$locale}'
-      path: '/use-cases/{-$locale}'
-      fullPath: '/use-cases/{-$locale}'
-      preLoaderRoute: typeof UseCasesChar123LocaleChar125RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/technology/{-$locale}': {
-      id: '/technology/{-$locale}'
-      path: '/technology/{-$locale}'
-      fullPath: '/technology/{-$locale}'
-      preLoaderRoute: typeof TechnologyChar123LocaleChar125RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing/{-$locale}': {
-      id: '/pricing/{-$locale}'
-      path: '/pricing/{-$locale}'
-      fullPath: '/pricing/{-$locale}'
-      preLoaderRoute: typeof PricingChar123LocaleChar125RouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Char123LocaleChar125Route: Char123LocaleChar125Route,
-  PricingChar123LocaleChar125Route: PricingChar123LocaleChar125Route,
-  TechnologyChar123LocaleChar125Route: TechnologyChar123LocaleChar125Route,
-  UseCasesChar123LocaleChar125Route: UseCasesChar123LocaleChar125Route,
+  PricingRoute: PricingRoute,
+  TechnologyRoute: TechnologyRoute,
+  UseCasesRoute: UseCasesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

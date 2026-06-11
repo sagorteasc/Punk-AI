@@ -1,10 +1,7 @@
 import { Loader } from "@mantine/core";
 import { motion } from "motion/react";
-import { useTranslation } from "react-i18next";
 
 const Loading = () => {
-  const { t } = useTranslation();
-
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center px-6">
       {/* Background Glow */}
@@ -20,11 +17,11 @@ const Loading = () => {
         <Loader size={64} color="#C88C2C" type="bars" className="mx-auto" />
 
         <h2 className="mt-8 font-ocrx text-4xl md:text-6xl text-(--primary-color)">
-          {t("loading.title")}
+          Loading
         </h2>
 
         <p className="mt-4 font-source-code-pro text-sm tracking-[0.2em] uppercase text-(--third-color)">
-          {t("loading.subtitle")}
+          Preparing Experience
         </p>
 
         <div className="mx-auto mt-6 flex w-fit items-center gap-2">

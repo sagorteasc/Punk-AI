@@ -1,61 +1,15 @@
-import {
-  Burger,
-  Button,
-  Group,
-  useComputedColorScheme,
-  useMantineColorScheme,
-} from "@mantine/core";
+import { Burger, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NavLogoLight from "/logo.svg";
-import NavLogoDark from "/logoWhite.svg";
 import DesktopView from "./DesktopView";
 import MobileView from "./MobileView";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Languages, Moon, Sun } from "lucide-react";
-import { useTranslation } from "react-i18next";
-import { useLocation } from "@tanstack/react-router";
 
 const Navbar = () => {
   const [opened, { toggle, close }] = useDisclosure();
   const [visible, setVisible] = useState(true);
-  const { setColorScheme } = useMantineColorScheme();
-  const computedColorScheme = useComputedColorScheme();
-  const { i18n } = useTranslation();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const isFrench = i18n.language === "fr-CA";
-  // Theme toggle
-  const toggleColorScheme = () => {
-    setColorScheme(computedColorScheme === "dark" ? "light" : "dark");
-  };
-
-  // Language toggle
-  const toggleLanguage = () => {
-    const scrollY = window.scrollY;
-
-    setVisible(true);
-
-    const path = location.pathname;
-
-    const newPath = path.endsWith("/fr")
-      ? path.replace(/\/fr$/, "") || "/"
-      : path === "/"
-        ? "/fr"
-        : `${path}/fr`;
-
-    navigate({
-      to: newPath as never,
-      replace: true,
-      resetScroll: false,
-    });
-
-    requestAnimationFrame(() => {
-      window.scrollTo(0, scrollY);
-    });
-  };
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -81,12 +35,6 @@ const Navbar = () => {
     };
   }, []);
 
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setVisible(true);
-    });
-  }, [location.pathname]);
-
   return (
     <motion.nav
       initial={{ y: 0 }}
@@ -102,12 +50,10 @@ const Navbar = () => {
       <div className="max-w-360 py-4 mx-auto">
         <div className="w-11/12 mx-auto">
           <Group justify="space-between">
-            <Link to={(isFrench ? "/fr" : "/") as never}>
+            <Link to={"/"}>
               <img
                 className="w-32 md:w-40 h-auto"
-                src={
-                  computedColorScheme === "dark" ? NavLogoDark : NavLogoLight
-                }
+                src={NavLogoLight}
                 alt="NavLogo"
               />
             </Link>
@@ -115,27 +61,6 @@ const Navbar = () => {
             <DesktopView />
 
             <Group hiddenFrom="md" gap={6} wrap="nowrap">
-              <Button
-                variant="white"
-                onClick={toggleColorScheme}
-                className="text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) transition-transform hover:-translate-y-1 hover:cursor-pointer"
-              >
-                {computedColorScheme === "dark" ? (
-                  <Sun size={18} />
-                ) : (
-                  <Moon size={18} />
-                )}
-              </Button>
-
-              <Button
-                variant="white"
-                onClick={toggleLanguage}
-                className="text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro font-bold!"
-              >
-                <Languages size={18} className="mr-1" />{" "}
-                {i18n.language === "en" ? "FR" : "EN"}
-              </Button>
-
               <Burger opened={opened} onClick={toggle} />
             </Group>
           </Group>

@@ -1,14 +1,14 @@
 export const navMenuLinks = [
   {
-    translationKey: "nav.useCases",
+    title: "Use Cases",
     link: "/use-cases",
   },
   {
-    translationKey: "nav.technology",
+    title: "Technology",
     link: "/technology",
   },
   {
-    translationKey: "nav.pricing",
+    title: "Pricing",
     link: "/pricing",
   },
 ];

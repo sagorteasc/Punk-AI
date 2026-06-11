@@ -1,22 +1,12 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
-import { useTranslation } from "react-i18next";
 
-export const Route = createFileRoute("/technology/{-$locale}")({
-  beforeLoad: ({ params }) => {
-    const locale = params.locale;
-
-    if (locale && locale !== "fr") {
-      throw notFound();
-    }
-  },
+export const Route = createFileRoute("/use-cases")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { t } = useTranslation();
-
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center px-6">
       {/* Background Glow */}
@@ -31,15 +21,16 @@ function RouteComponent() {
           transition={{ duration: 0.6 }}
         >
           <span className="inline-block rounded-full border border-[#C88C2C]/20 bg-white px-5 py-2 font-source-code-pro text-xs tracking-[0.25em] text-[#C88C2C] uppercase shadow-sm">
-            {t("routes.badge")}
+            Under Development
           </span>
 
           <h1 className="mt-8 font-ocrx text-[clamp(3rem,7vw,6rem)] text-(--primary-color)">
-            {t("routes.title")}
+            Coming Soon
           </h1>
 
           <p className="mx-auto mt-8 max-w-xl text-lg text-(--third-color)">
-            {t("routes.description")}
+            We're crafting something special behind the scenes. This experience
+            is currently being built and will be available in a future update.
           </p>
 
           <div className="mx-auto mt-10 flex w-fit items-center gap-2">
@@ -60,7 +51,7 @@ function RouteComponent() {
             className="inline-flex items-center gap-3 rounded px-6 py-3 text-sm font-bold  text-(--btn-text)! bg-(--btn-bg)! shadow-(--btn-shadow) font-source-code-pro transition-transform duration-200 hover:-translate-y-1 hover:cursor-pointer"
           >
             <ArrowLeft size={16} />
-            {t("routes.returnHome")}
+            RETURN HOME
           </Link>
         </motion.div>
       </div>
