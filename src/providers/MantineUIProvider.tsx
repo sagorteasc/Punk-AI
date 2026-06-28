@@ -106,7 +106,7 @@ const MantineUIProvider = ({ children }: { children: React.ReactNode }) => {
   const theme = mergeMantineTheme(DEFAULT_THEME, themeOverride)
 
 
-  return <MantineProvider theme={theme} forceColorScheme="light">{children}</MantineProvider>;
+  return <MantineProvider theme={theme} cssVariablesResolver={cssResolver} forceColorScheme="light">{children}</MantineProvider>;
 };
 
 export default MantineUIProvider;

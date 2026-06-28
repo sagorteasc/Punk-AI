@@ -10,7 +10,6 @@ import {
   Badge,
   Image,
   ActionIcon,
-  ScrollArea,
   Paper,
   Divider,
 } from '@mantine/core'
@@ -68,7 +67,10 @@ export default function UploadPage() {
   return (
     <Box className="flex! h-dvh! w-full! items-start! justify-center! overflow-y-auto! px-4! py-6! lg:items-center!">
       <Flex
-        className="mx-auto! bg-gray-700! text-white! my-auto! h-auto! w-[95%]! max-w-250! flex-col! justify-center! rounded-lg! lg:h-full! lg:w-full! lg:flex-row! xl:h-[95%]!"
+        style={{
+          backgroundColor: 'var(--mantine-color-widget-primary)',
+        }}
+        className="mx-auto! my-auto! h-auto! w-[95%]! max-w-250! flex-col! justify-center! rounded-lg! lg:h-full! lg:w-full! lg:flex-row! xl:h-[95%]!"
       >
         {/* ────── LEFT PANEL: Upload Campaign Content ────── */}
         {isMobile ? (
