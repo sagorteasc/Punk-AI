@@ -13,6 +13,7 @@ import { Route as UseCasesRouteImport } from './routes/use-cases'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as mainUploadIndexRouteImport } from './routes/(main)/upload/index'
 
 const UseCasesRoute = UseCasesRouteImport.update({
   id: '/use-cases',
@@ -34,18 +35,25 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const mainUploadIndexRoute = mainUploadIndexRouteImport.update({
+  id: '/(main)/upload/',
+  path: '/upload/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
   '/technology': typeof TechnologyRoute
   '/use-cases': typeof UseCasesRoute
+  '/upload/': typeof mainUploadIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
   '/technology': typeof TechnologyRoute
   '/use-cases': typeof UseCasesRoute
+  '/upload': typeof mainUploadIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,20 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/technology': typeof TechnologyRoute
   '/use-cases': typeof UseCasesRoute
+  '/(main)/upload/': typeof mainUploadIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/pricing' | '/technology' | '/use-cases'
+  fullPaths: '/' | '/pricing' | '/technology' | '/use-cases' | '/upload/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/pricing' | '/technology' | '/use-cases'
-  id: '__root__' | '/' | '/pricing' | '/technology' | '/use-cases'
+  to: '/' | '/pricing' | '/technology' | '/use-cases' | '/upload'
+  id:
+    | '__root__'
+    | '/'
+    | '/pricing'
+    | '/technology'
+    | '/use-cases'
+    | '/(main)/upload/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +82,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   TechnologyRoute: typeof TechnologyRoute
   UseCasesRoute: typeof UseCasesRoute
+  mainUploadIndexRoute: typeof mainUploadIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(main)/upload/': {
+      id: '/(main)/upload/'
+      path: '/upload'
+      fullPath: '/upload/'
+      preLoaderRoute: typeof mainUploadIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   TechnologyRoute: TechnologyRoute,
   UseCasesRoute: UseCasesRoute,
+  mainUploadIndexRoute: mainUploadIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
